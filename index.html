@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
         <meta charset="utf-8">
@@ -16,11 +17,66 @@
     <div class="row">
         <div class="col-lg-6">
             <div id="graph1"></div>
+            <select id="selectButton"></select>
             <div id="graph2"></div><br/>
         </div>
         <div class="col-lg-6">
             <div id="graph3"></div>
         </div>
+    </div>
+    <div>
+      <p>
+        1. My first graph, Count per Genre, answers my boss's question about how many titles per genre.
+        My graph shows the genres on the y axis and the count on the x axis, with the Movie Count printed at
+          end of each bar. My second graph, Average Movie Duration per Year, shows the average duration on the
+          y axis and the year on the x axis. You can change the end date of the chart to add more or fewer years
+          to the chart in total. The overall trend in movie duration averages can be observed
+          looking at the changing bar lines over time. The final graph shows the links between actors who acted
+          in movies together in the year 2020. The reason I chose to limit it to 2020 is because there are
+          many many data points and the network would be a little too cluttered if it had more data. This could
+          be altered in the future, but my graph does answer the question of learning about the cast.
+        <br>
+        2. 1. D3 makes it easy to put data into preset data visualization formats. Any bar chart, graph network,
+        line chart, etc. D3 makes it so you don't have to reinvent the wheel. 2. It was really easy to add
+        colors to my charts. The blue gradient on graph1 barchart is pretty and easy to add. 3. D3 was
+        helpful to use because there is a lot of online documentation about it. I didn't have too much trouble
+        finding online help when I ran into a D3 specific issue, which is really important when coding with
+        a new framework.
+        <br>
+        3. 1. At times D3 can be confusing with all of the .addOns. I wasn't sure exactly how to add a tooltip
+        and it took me a long time to figure out how to. I also think the way we did the lab was a little confusing
+        for learning D3. I don't know that I fully understand the point of creating an svg or a title, for example,
+        and then adding .text to it later on after initializing it before. Why not initialize it and add the text
+        all at once? 2. Although the online help was nice to have when I got stuck, I found that a lot of the
+        help online doesn't explain the steps but rather just gives the code that worked for them. I think it would
+        be much more helpful to create visualizations with a resource that is better documented and has more
+        online explanations. 3. One of the hardest things for me was getting the graphs (specifically the
+        network graph) to stay on the page. I wish that the network graph were easier to manipulate and more
+        intuitive.
+        <br>
+        4. I really tried to keep in mind the accessibility of my dashboard as I was creating it. One of
+        the deliberate choices I made was to create a dropdown that a screenreader couldd read through
+        rather than a sliding scale, even though that might have made more sense visually considering my
+        dropdown has a ton of years. Another choice I made was to not use too many colors, since I didn't
+        really need them to convey my meaning. As the readings mention, adding colors can be really helpful,
+        but adding them unnecessarily can make things confusing and a lot of people who are colorblind can
+        miss out on information conveyed by color. One other thing that would have made my second graph
+        more accessible was to add text of the duration (mins) above each bar so that a screenreader could
+        read over the value of each bar. Right now it's just a bar that has to be visually scanned to
+        gain insight from the plot. I don't know if screenreaders can read the mouseover data on the
+        nodes of my network graph, either. I'm not sure how tooltips work for assistive devices, but I
+        did think about this as I was creating my graph.
+        <br>
+        5. One of the biggest factors that kept me from taking steps for accessibility in this project was time.
+        I was not super familiar with html/js/css/d3
+        prior to this project, so it took me a lot of time to get used to the tools. I
+        wish that I had more time to look into how to add numbers to my bar chart and captions to my graphs
+        to explain the summary of the information that they show, but unfortunately a combination of
+        inexperience and lack of time led to me omitting these helpful features. I hate to give this as an
+        excuse, especially when in the tech world everything is moving so fast and the excuse is usually a
+        need to push a product out under a time crunch, but I really was trying to
+        keep accessibility in mind from the start.
+      </p>
     </div>
     <!--Feel free to add more JavaScript files as needed-->
     <script type="text/javascript" src="main.js"></script>

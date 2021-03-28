@@ -128,6 +128,7 @@ function getDataGraph1(data, comparator, num) {
 // -------- DURATION ----------------------//
 
 function durationBarChart(endYear) {
+
   let svg = d3.select("#graph2")
       .append("svg")
       .attr("width", graph_2_width)
@@ -155,41 +156,50 @@ function durationBarChart(endYear) {
        .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
      d3.select("#selectButton").on("change", function(d) {
-         var selectedOption = d3.select(this).property("value")
+         var selectedOption = d3.select(this).property("value");
+         svg = d3.select("#graph2")
+             .append("svg")
+             .attr("width", graph_2_width)
+             .attr("height", graph_2_height)
+             .append("g")
+             .attr("transform", `translate(${margin.left-80},${margin.top})`);
+
+         d3.select("#graph2").select("svg").remove();
          setData(selectedOption)
      })
 
-   // x-axis label
-   svg.append("text")
-       .attr("transform", `translate(${(graph_2_width - margin.left - margin.right) / 2},
-                                     ${(graph_2_height - margin.top - margin.bottom + 38)})`)
-       .style("text-anchor", "middle")
-       .text("Year");
-
-   // y-axis label
-   let y_axis_text = svg.append("text")
-       .attr("transform", `translate(-60, ${(graph_2_height - margin.top - margin.bottom) / 2 - 5})`)
-       .style("text-anchor", "middle")
-       .text("Duration (mins)")
-       .style("font-size", 10);
-
-   // chart title
-   let title = svg.append("text")
-       .attr("transform", `translate(${(graph_2_width - margin.left - margin.right) / 2}, ${-10})`)
-       .style("text-anchor", "middle")
-       .style("font-size", 15);
-
-   let selectionTitle = svg.append("text")
-       .attr("transform", `translate(${(graph_2_width - margin.left - margin.right) / 2 - 375}, ${-27})`)
-       .style("text-anchor", "middle")
-       .style("font-size", 15);
-
-   selectionTitle.text("Choose End Year");
-
-   title.text("Average Movie Duration per Year");
-
   function setData(endYear) {
     d3.csv(durationsFile).then(function(data) {
+
+
+     let selectionTitle = svg.append("text")
+         .attr("transform", `translate(${(graph_2_width - margin.left - margin.right) / 2 - 375}, ${-25})`)
+         .style("text-anchor", "middle")
+         .style("font-size", 13);
+
+     selectionTitle.text("Choose End Year");
+
+     // x-axis label
+     svg.append("text")
+         .attr("transform", `translate(${(graph_2_width - margin.left - margin.right) / 2},
+                                       ${(graph_2_height - margin.top - margin.bottom + 38)})`)
+         .style("text-anchor", "middle")
+         .text("Year");
+
+     // y-axis label
+     let y_axis_text = svg.append("text")
+         .attr("transform", `translate(-60, ${(graph_2_height - margin.top - margin.bottom) / 2 - 5})`)
+         .style("text-anchor", "middle")
+         .text("Duration (mins)")
+         .style("font-size", 10);
+
+     // chart title
+     let title = svg.append("text")
+         .attr("transform", `translate(${(graph_2_width - margin.left - margin.right) / 2}, ${-10})`)
+         .style("text-anchor", "middle")
+         .style("font-size", 15);
+
+     title.text("Average Movie Duration per Year");
 
       startYear = "1942"
       data = sliceDurationData(startYear, endYear, data);
